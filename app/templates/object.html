@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Информация об объекте аренды</h1>
+        <div class="object-profile">
+            <img src="/static/images/{{ obj.id }}.webp" alt="Фото объекта аренды">
+            <div class="object-info">
+                <h2 hidden>ID: {{ obj.id }}</h2>
+                <h2><strong>Наименование:</strong> {{ obj.name }}</h2>
+                <p><strong>Описание:</strong> {{ obj.description }}</p>
+                <p><strong>Email:</strong> {{ obj.email }}</p>
+                <p><strong>Адрес:</strong> {{ obj.address }}</p>
+                <p><strong>Телефон:</strong> {{obj.phone_number}}</p>
+                <p><strong>ID категории объекта:</strong> {{ obj.category_id }}</p>
+                <a href="/reservation?object_id={{obj.id}}" class="back-link" onclick="checkAuthFunction(event)">Начать бронирование</a>
+            </div>
+        </div>
+        <a href="/objects?category_id={{obj.category_id}}" class="back-link">Вернуться к списку объектов</a>
+    </div>
+</body>
+{% endblock %}

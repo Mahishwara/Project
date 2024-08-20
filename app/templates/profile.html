@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Мой профиль</h1>
+    <div class="object-profile">
+        <div class="object-info">
+            <h2 hidden>ID: {{ profile.id }}</h2>
+            <p><strong>Полное имя:</strong> {{ profile.first_name }} {{ profile.last_name }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            {% if (reservations): %}
+                <div class="container">
+                <h1>Список всех бронирований</h1>
+                {% for reservation in reservations %}
+                <div class="object-card">
+                    <div class="details">
+                    <p hidden>ID: <span id="res_id">{{ reservation.id }}</span></p>
+                    <h2>Название: {{reservation.name}}</h2>
+                    <p>С какой даты: {{reservation.date_from}}</p>
+                    <p>По какую даты: {{reservation.date_to}}</p>
+                    <p>Какой объект забронирован: {{reservation.object_id}}</p>
+                    </div>
+                    <a onclick="deleteFunction()">Удалить в один клик</a>
+                </div>
+                {% endfor %}
+                </div>
+            {% else: %}
+                <h1>Список бронирований пуст</h1>
+            {% endif %}
+        </div>
+    </div>
+    <button type="submit" id="logout-button" class="submit-button" onclick="logoutFunction()">Выйти</button>
+</div>
+{% endblock %}

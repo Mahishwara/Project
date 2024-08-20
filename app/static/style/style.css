@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.background {
+    background: #5750a4;
+    background-blend-mode: darken;
+    background-size: cover;
+}
+
+.nav-list {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.right {
+    width: 30%;
+    text-align: right
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.nav-list li {
+    list-style: none;
+    padding: 10px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+    font-size: 32px;
+}
+
+.nav-list li a:hover {
+    color: grey;
+}
+.nav-list p{
+    color: white;
+    font-size: 32px;
+}
+
+h1 {
+    margin-top: 0;
+    color: #333;
+}
+
+.object-card {
+
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+
+.object-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+.object-card .details {
+    flex-grow: 1;
+}
+
+
+.object-card a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+.object-card a:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.registration-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.registration-form input[type="email"],
+.registration-form input[type="password"],
+.registration-form input[type="tel"],
+.registration-form input[type="text"],
+.registration-form input[type="date"],
+.registration-form input[type="number"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+.submit-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.object-profile {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.object-profile img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.object-info {
+    flex-grow: 1;
+}
+
+.object-info h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.object-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #020202;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    background-color: #0056b3;
+}
+
+
+

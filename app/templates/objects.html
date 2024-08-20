@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <h1>Список объектов аренды </h1>
+        {% for object in objects %}
+        <div class="object-card">
+            <img src="/static/images/{{ object.id }}.webp" alt="Фото объекта">
+            <div class="details">
+            <h2 hidden>ID: {{ object.id }}</h2>
+                <p><strong>Наименование:</strong> {{object.name}}</p>
+                <p><strong>Описание:</strong> {{object.description}}</p>
+            </div>
+            <a href="/objects/{{ object.id }}">Смотреть всю информацию</a>
+        </div>
+        {% endfor %}
+        <a href="/" class="back-link">Вернуться к списку всех категорий объектов</a>
+    </div>
+{% endblock %}

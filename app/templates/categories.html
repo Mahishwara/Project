@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <h1>Список всех категорий объектов аренды</h1>
+        {% for category in categories %}
+        <div class="object-card">
+            <div class="details">
+            <p hidden>ID: {{ category.id }}</p>
+            <h2>Наименование: {{ category.name}}</h2>
+            <p>Описание: {{ category.description }}</p>
+            </div>
+            <a href="/objects?category_id={{ category.id }}">Смотреть всю информацию</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

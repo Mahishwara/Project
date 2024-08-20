@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/static/style/style.css">
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <li><div class="logo"><img src="/static/images/logo.png"
+                 alt="Logo"></div></li>
+            <li><p>Бронирование помещений</p></li>
+        </ul>
+        <ul class="nav-list right">
+            <li><a href="/">Главная</a></li>
+            <li><a onclick="profileFunction(event)">Профиль</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content%}
+        {% endblock %}
+    </main>
+</body>
+</html>

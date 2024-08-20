@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Форма бронирования {{obj.name}}</h1>
+        <form id="booking-form" class="registration-form">
+            <label for="name">Название</label>
+            <input type="text" id="name" name="name" required>
+            <label for="date_from">С какой даты</label>
+            <input type="date" id="date_from" name="date_from" required>
+            <label for="count_days">Количество дней</label>
+            <input type="number" id="count_days" name="count_days" required>
+            <input id='object_id' type="hidden" name="object_id" value="{{obj.id}}">
+            <button type="submit" id="reserv-button" class="submit-button" onclick="bookingFunction(event)">Забронировать</button>
+    </form>
+        <a href="/objects/?object_id={{obj.id}}" class="back-link">Вернуться к объекту</a>
+    </div>
+</body>
+{% endblock %}
