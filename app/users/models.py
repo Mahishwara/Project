@@ -1,19 +1,19 @@
-from sqlalchemy import text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.database import Base, str_uniq, int_pk
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
+from database import Base
 
 
 class User(Base):
-    id: Mapped[int_pk]
-    phone_number: Mapped[str_uniq]
-    first_name: Mapped[str]
-    last_name: Mapped[str]
-    email: Mapped[str_uniq]
-    password: Mapped[str]
+    __tablename__ = 'users'
 
-    is_admin: Mapped[bool] = mapped_column(default=False, server_default=text('false'), nullable=False)
-    reservations: Mapped["Reservation"] = relationship("Reservation", back_populates="user")
 
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    phone_number: Mapped[str] = mapped_column(String(25), nullable=False)
+    first_name: Mapped[str] = mapped_column(String(50), nullable=False)
+    last_name: Mapped[str] = mapped_column(String(50), nullable=False)
+    email: Mapped[str] = mapped_column(String(50), nullable=False)
+    password: Mapped[str] = mapped_column(String(100), nullable=False)
+    is_admin: Mapped[bool] = mapped_column(default=False)
     extend_existing = True
 
     def __repr__(self):
