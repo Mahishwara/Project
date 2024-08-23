@@ -1,10 +1,10 @@
 from fastapi import Request, HTTPException, status, Depends
 from jose import jwt, JWTError
 from datetime import datetime, timezone
-from app.config import get_auth_data
-from app.exceptions import TokenExpiredException, NoJwtException, NoUserIdException, ForbiddenException, TokenNoFound
-from app.users.dao import UsersDAO
-from app.users.models import User
+from config import get_auth_data
+from exceptions import TokenExpiredException, NoJwtException, NoUserIdException, ForbiddenException, TokenNoFound
+from users.dao import UsersDAO
+from users.models import User
 
 
 def get_token(request: Request):
