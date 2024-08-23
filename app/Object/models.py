@@ -1,22 +1,19 @@
-from sqlalchemy import ForeignKey, Text, text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.database import Base, str_uniq, int_pk, str_null_true
-
+from sqlalchemy import ForeignKey, String, Integer, Text
+from database import Base
+from sqlalchemy.orm import Mapped, mapped_column
 
 # создаем модель таблицы объектов бронирования
 class Object(Base):
     __tablename__ = 'objects'
 
-    id: Mapped[int_pk]
-    name: Mapped[str]
-    description: Mapped[str_null_true]
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(50), nullable=False)
+    description: Mapped[str] = mapped_column(String(200), nullable=False)
     address: Mapped[str] = mapped_column(Text, nullable=False)
-    email: Mapped[str_uniq]
-    phone_number: Mapped[str_uniq]
+    email: Mapped[str] = mapped_column(String(100), nullable=False)
+    phone_number: Mapped[str] = mapped_column(String(25), nullable=False)
     photo: Mapped[str] = mapped_column(Text, nullable=True)
     category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"), nullable=False)
-    category: Mapped["Category"] = relationship("Category", back_populates="objects")
-    reservations: Mapped["Reservation"] = relationship("Reservation", back_populates="object")
     extend_existing = True
 
     def __str__(self):
