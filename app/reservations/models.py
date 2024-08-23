@@ -1,20 +1,18 @@
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from datetime import date
-from app.database import Base, int_pk
+from sqlalchemy import ForeignKey, String, Date
+from sqlalchemy.orm import Mapped, mapped_column
+from database import Base
+import datetime
 
 
 class Reservation(Base):
     __tablename__ = 'reservations'
 
-    id: Mapped[int_pk]
-    name: Mapped[str]
-    date_from: Mapped[date]
-    date_to: Mapped[date]
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50), nullable=False)
+    date_from: Mapped[datetime.datetime]
+    date_to: Mapped[datetime.datetime]
     object_id: Mapped[int] = mapped_column(ForeignKey("objects.id"), nullable=False)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    object: Mapped["Object"] = relationship("Object", back_populates="reservations")
-    user: Mapped["User"] = relationship("User", back_populates="reservations")
     extend_existing = True
 
     def __str__(self):
