@@ -2,9 +2,9 @@ from datetime import date
 
 from fastapi import APIRouter, Depends
 
-from app.reservations.dao import ReservationDAO
-from app.reservations.rb import RBReservation
-from app.reservations.schemas import SReservation, SReservationAdd, SReservationCheck
+from reservations.dao import ReservationDAO
+from reservations.rb import RBReservation
+from reservations.schemas import SReservation, SReservationAdd, SReservationCheck
 
 router = APIRouter(
     prefix='/reservations',
@@ -20,11 +20,11 @@ async def get_reservations(request_body: RBReservation = Depends()) -> list[SRes
 async def get_reservation(reservation_id: int) -> SReservation | dict:
     res = await ReservationDAO.get_object(id=reservation_id)
     if res is None:
-        return {'': f'Бронирование с данными ID не найдено!'}
+        return {'': 'Бронирование с данными ID не найдено!'}
     return res
 
 
-@router.post("/add/", summary="Добавить новое бронирование")
+@router.post("/add", summary="Добавить новое бронирование")
 async def add_new_object(reservation: SReservationAdd) -> dict:
     check = await ReservationDAO.add(**reservation.dict())
     if check:
@@ -33,16 +33,16 @@ async def add_new_object(reservation: SReservationAdd) -> dict:
         return {"message": "Ошибка при добавлении бронирования!"}
 
 
-@router.delete("/dell/", summary='Удалить бронирование')
+@router.delete("/dell", summary='Удалить бронирование')
 async def dell_by_id(request_body: RBReservation = Depends()) -> dict:
     check = await ReservationDAO.delete(**request_body.to_dict())
     if check:
-        return {"message": f"Бронирование с успешно удалено!"}
+        return {"message": "Бронирование успешно удалено!"}
     else:
         return {"message": "Ошибка при удалении бронирования!"}
 
 
-@router.post("/check/", summary='Проверить новое бронирование')
+@router.post("/check", summary='Проверить новое бронирование')
 async def check(reservation: SReservationCheck) -> dict:
     check = await ReservationDAO.check_new_reservation(**reservation.dict())
     if type(check) == str:
