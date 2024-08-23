@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends
 
-from app.Category.dao import CategoryDAO
-from app.Category.rb import RBCategory
-from app.Category.schemas import SCategory, SCategoryAdd, SCategoryUpd
-from app.users.dependencies import get_current_admin_user
-from app.users.models import User
+from Category.dao import CategoryDAO
+from Category.rb import RBCategory
+from Category.schemas import SCategory, SCategoryAdd, SCategoryUpd
+from users.dependencies import get_current_admin_user
+from users.models import User
 
 router = APIRouter(
     prefix='/categories',
@@ -21,11 +21,11 @@ async def get_all_categories(request_body: RBCategory = Depends()) -> list[SCate
 async def get_category_by_id(category_id: int) -> SCategory | dict:
     res = await CategoryDAO.get_object(id=category_id)
     if res is None:
-        return {'message': f'Категория с данным ID не найдена!'}
+        return {'message': 'Категория с данным ID не найдена!'}
     return res
 
 
-@router.post("/add/", summary='Добавить новую категорию')
+@router.post("/add", summary='Добавить новую категорию')
 async def register_category(category: SCategoryAdd, user_data: User = Depends(get_current_admin_user)) -> dict:
     check = await CategoryDAO.add(**category.dict())
     if check:
@@ -34,7 +34,7 @@ async def register_category(category: SCategoryAdd, user_data: User = Depends(ge
         return {"message": "Ошибка при добавлении категории!"}
 
 
-@router.put("/update/", summary='Изменить описание типа')
+@router.put("/update", summary='Изменить описание типа')
 async def update_category(category: SCategoryUpd, user_data: User = Depends(get_current_admin_user)) -> dict:
     check = await CategoryDAO.update(filter_by={'category_name': category.category_name},
                                    category_description=category.category_description)
@@ -48,6 +48,6 @@ async def update_category(category: SCategoryUpd, user_data: User = Depends(get_
 async def delete_category(request_body: RBCategory = Depends(), user_data: User = Depends(get_current_admin_user)) -> dict:
     check = await CategoryDAO.delete(**request_body.to_dict())
     if check:
-        return {"message": f"Категория(и) успешно удалена(ы)!"}
+        return {"message": "Категория(и) успешно удалена(ы)!"}
     else:
         return {"message": "Ошибка при удалении категории(й)!"}
