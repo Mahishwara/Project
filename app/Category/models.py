@@ -1,16 +1,14 @@
-from sqlalchemy import text
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-from app.database import Base, str_uniq, int_pk, str_null_true
+from sqlalchemy import String
+from sqlalchemy.orm import Mapped, mapped_column
+from database import Base
 
 
 class Category(Base):
     __tablename__ = 'categories'
 
-    id: Mapped[int_pk]
-    name: Mapped[str_uniq]
-    description: Mapped[str_null_true]
-    objects: Mapped[list["Object"]] = relationship("Object", back_populates="category")
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(50))
+    description: Mapped[str] = mapped_column(String(150))
     extend_existing = True
 
     def __str__(self):
