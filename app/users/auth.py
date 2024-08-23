@@ -2,8 +2,8 @@ from passlib.context import CryptContext
 from pydantic import EmailStr
 from jose import jwt
 from datetime import datetime, timedelta, timezone
-from app.config import get_auth_data
-from app.users.dao import UsersDAO
+from config import get_auth_data
+from users.dao import UsersDAO
 
 
 def create_access_token(data: dict) -> str:
