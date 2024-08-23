@@ -1,7 +1,6 @@
 import re
-from typing import Optional
 
-from pydantic import BaseModel, Field, EmailStr, field_validator
+from pydantic import BaseModel, Field, EmailStr
 from pydantic.v1 import validator
 
 
