@@ -4,9 +4,9 @@ from datetime import date
 from sqlalchemy import select, and_
 
 
-from app.dao.base import BaseDAO
-from app.database import async_session_maker
-from app.reservations.models import Reservation
+from dao.base import BaseDAO
+from database import async_session_maker
+from reservations.models import Reservation
 
 
 
