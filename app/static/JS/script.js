@@ -7,7 +7,7 @@ async function regFunction(event) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('/auth/register', {
+        const response = await fetch('https://mahishwara.pythonanywhere.com/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ async function loginFunction(event) {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('/auth/login', {
+        const response = await fetch('https://mahishwara.pythonanywhere.com/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ async function loginFunction(event) {
 async function logoutFunction(event) {
     try {
         // Отправка POST-запроса для удаления куки на сервере
-        let response = await fetch('/auth/logout', {
+        let response = await fetch('https://mahishwara.pythonanywhere.com/auth/logout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ async function profileFunction(event) {
 
 async function checkAuthFunction(event) {
     try {
-        let response = await fetch('/auth/me', {
+        let response = await fetch('https://mahishwara.pythonanywhere.com/auth/me', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -147,7 +147,7 @@ async function bookingFunction(event) {
     let data = Object.fromEntries(formData.entries());
     console.log(data)
     try {
-        let response = await fetch('/reservations/check/', {
+        let response = await fetch('/reservations/check', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -169,7 +169,7 @@ async function bookingFunction(event) {
             response2 = await response2.json();
             user_id = response2.id
 
-            let response3 = await fetch('/reservations/add/', {
+            let response3 = await fetch('/reservations/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -190,7 +190,7 @@ async function bookingFunction(event) {
 
 async function deleteFunction(event) {
     let reservation = document.getElementById('res_id').textContent
-    let current_url = '/reservations/dell/?reservation_id=' + reservation
+    let current_url = 'https://mahishwara.pythonanywhere.com/reservations/dell?reservation_id=' + reservation
     try {
         let response = await fetch(current_url, {
             method: 'DELETE',
